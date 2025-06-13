@@ -9,7 +9,9 @@ const PORT = 3000;
 // Middleware
 app.use(cors());
 app.use(express.json());
-app.use(express.static(path.join(__dirname, 'public'))); // Servir archivos estáticos
+
+// Servir archivos estáticos desde la carpeta "public"
+app.use(express.static(path.join(__dirname, 'public')));
 
 // Ruta para enviar el correo
 app.post('/send', async (req, res) => {
@@ -27,7 +29,7 @@ app.post('/send', async (req, res) => {
         await transporter.sendMail({
             from: 'oficina20sanjuan@gmail.com',
             replyTo: email,
-            to: 'oficina20sanjuan@gmail.com', // <- AGREGAR DESTINATARIO
+            to: 'oficina20sanjuan@gmail.com',
             subject: 'Nuevo mensaje desde la web',
             text: `Nombre: ${nombre}\nEmail: ${email}\nMensaje: ${mensaje}`
         });
@@ -37,12 +39,14 @@ app.post('/send', async (req, res) => {
         console.error(error);
         res.status(500).json({ success: false, message: 'Error al enviar el correo' });
     }
-
-    app.use(express.static(path.join(__dirname, 'public')));
-
 });
 
-// Arrancar el servidor
+// Ruta de fallback para servir index.html si el usuario accede directamente a "/"
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
+
+// Iniciar servidor
 app.listen(PORT, () => {
     console.log(`Servidor corriendo en http://localhost:${PORT}`);
 });

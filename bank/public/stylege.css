@@ -76,3 +76,37 @@ form button {
 form button:hover {
     background-color: #0a9396;
 }
+#chatbot {
+    position: fixed; 
+    bottom: 20px; right: 20px; 
+    width: 300px; 
+    background: #f1f1f1; 
+    border-radius: 10px; 
+    box-shadow: 0 0 10px rgba(0,0,0,0.2); 
+    padding: 10px; 
+    font-family: Arial, sans-serif;
+
+}
+#respuesta {
+    min-height: 50px; 
+    padding: 10px; 
+    background: white;
+     border-radius: 5px;
+      margin-bottom: 10px; 
+      overflow-wrap: break-word;
+}
+#mensaje {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+#enviar {
+    background-color: #ff00a2;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
