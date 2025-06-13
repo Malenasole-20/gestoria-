@@ -37,6 +37,9 @@ app.post('/send', async (req, res) => {
         console.error(error);
         res.status(500).json({ success: false, message: 'Error al enviar el correo' });
     }
+
+    app.use(express.static(path.join(__dirname, 'public')));
+
 });
 
 // Arrancar el servidor
