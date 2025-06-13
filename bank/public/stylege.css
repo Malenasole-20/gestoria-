@@ -77,14 +77,20 @@ form button:hover {
     background-color: #0a9396;
 }
 #chatbot {
-    position: fixed; 
-    bottom: 20px; right: 20px; 
-    width: 300px; 
-    background: #f1f1f1; 
-    border-radius: 10px; 
-    box-shadow: 0 0 10px rgba(0,0,0,0.2); 
-    padding: 10px; 
-    font-family: Arial, sans-serif;
+     position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #007BFF;
+    color: rgb(0, 0, 0);
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 60px;
+    font-size: 28px;
+    cursor: pointer;
+    z-index: 1000;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 
 }
 #respuesta {
