@@ -27,3 +27,36 @@ app.get('*', (req, res) => {
     }
     
 });
+
+
+// Base de datos simple de preguntas/respuestas
+const respuestasPredefinidas = {
+  "hola": "¡Hola! ¿En qué puedo ayudarte?",
+  "que tramites hacen": "Realizamos asesoramiento, trámites vehiculares y gestión de documentos.",
+  "donde estan": "Estamos en San Juan, Argentina. Te pasamos la dirección completa por WhatsApp si querés.",
+  "horario": "Atendemos de lunes a viernes de 9 a 17 hs.",
+  "tramite vehicular": "Necesitás DNI, título del vehículo y cédula verde. Consultá si tenés dudas con los papeles.",
+  "gracias": "¡De nada! Si necesitás algo más, estoy acá 😊"
+};
+
+function enviar() {
+  const input = document.querySelector('#chatbot input[type="text"]');
+  const mensaje = input.value.trim().toLowerCase();
+  const contenedorRespuesta = document.getElementById('respuesta');
+
+  if (!mensaje) return;
+
+  // Buscar respuesta
+  let respuesta = "Lo siento, no entiendo tu pregunta. Podés consultarnos directamente por WhatsApp.";
+
+  for (let clave in respuestasPredefinidas) {
+    if (mensaje.includes(clave)) {
+      respuesta = respuestasPredefinidas[clave];
+      break;
+    }
+  }
+
+  contenedorRespuesta.innerHTML = `<strong>Vos:</strong> ${mensaje}<br><strong>Bot:</strong> ${respuesta}`;
+  input.value = "";
+}
+
