@@ -51,19 +51,27 @@
         </form>
         
     </section>
-    <!-- Contenedor flotante del chatbot -->
-<div id="chatbot" >
+    <!-- Botón flotante de chat -->
+<div id="chatToggle" onclick="toggleChat()">
+    💬
+</div>
 
-  <div id="respuesta" >
-    ¡Hola! Soy tu asistente virtual. Escribí tu consulta abajo.
+<!-- Ventana del chatbot -->
+<div id="chatbotContainer" >
+  
+  <div style="background-color: #007BFF; color: white; padding: 12px; font-weight: bold;">
+    🤖 Asistente Virtual
   </div>
 
-  <input type="text" id="mensaje" placeholder="Escribí tu mensaje..."/>
-  <button onclick="enviar()" style="width: 100%; padding: 8px; border: none; border-radius: 5px; background-color: #007BFF; color: white; font-weight: bold; cursor: pointer;">
-    Enviar
-  </button>
+  <div id="respuesta" >
+    ¡Hola! ¿En qué puedo ayudarte?
+  </div>
 
+  <div style="padding: 10px; border-top: 1px solid #ddd; background: white;">
+<input id="mensaje" type="text" placeholder="Escribí tu mensaje..." onkeypress="if(event.key === 'Enter') enviar();">
 </div>
+
+
 
 </body>
 <script src="scriptge.js"></script>

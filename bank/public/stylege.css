@@ -76,12 +76,13 @@ form button {
 form button:hover {
     background-color: #0a9396;
 }
-#chatbot {
-     position: fixed;
+
+#chatToggle {
+position: fixed;
     bottom: 20px;
     right: 20px;
     background-color: #007BFF;
-    color: rgb(0, 0, 0);
+    color: white;
     width: 60px;
     height: 60px;
     border-radius: 50%;
@@ -91,28 +92,33 @@ form button:hover {
     cursor: pointer;
     z-index: 1000;
     box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-
+}
+#chatbotContainer{
+    position: fixed;
+    bottom: 90px;
+    right: 20px;
+    width: 320px;
+    max-height: 400px;
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    display: none;
+    flex-direction: column;
+    overflow: hidden;
+    z-index: 1000;
+    font-family: 'Arial', sans-serif;
 }
 #respuesta {
-    min-height: 50px; 
-    padding: 10px; 
-    background: white;
-     border-radius: 5px;
-      margin-bottom: 10px; 
-      overflow-wrap: break-word;
+   padding: 10px;
+      flex-grow: 1;
+      overflow-y: auto;
+      background-color: #f9f9f9;
+      font-size: 14px; 
 }
 #mensaje {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-sizing: border-box;
-}
-#enviar {
-    background-color: #ff00a2;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
+      width: 100%;
+        padding: 8px;
+        border-radius: 8px;
+        border: 1px solid #ccc;
+        box-sizing: border-box;
 }

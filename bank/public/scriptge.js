@@ -28,35 +28,34 @@ app.get('*', (req, res) => {
     
 });
 
-
-// Base de datos simple de preguntas/respuestas
-const respuestasPredefinidas = {
-  "hola": "¡Hola! ¿En qué puedo ayudarte?",
-  "que tramites hacen": "Realizamos asesoramiento, trámites vehiculares y gestión de documentos.",
-  "donde estan": "Estamos en San Juan, Argentina. Te pasamos la dirección completa por WhatsApp si querés.",
-  "horario": "Atendemos de lunes a viernes de 9 a 17 hs.",
-  "tramite vehicular": "Necesitás DNI, título del vehículo y cédula verde. Consultá si tenés dudas con los papeles.",
-  "gracias": "¡De nada! Si necesitás algo más, estoy acá 😊"
-};
-
-function enviar() {
-  const input = document.querySelector('#chatbot input[type="text"]');
-  const mensaje = input.value.trim().toLowerCase();
-  const contenedorRespuesta = document.getElementById('respuesta');
-
-  if (!mensaje) return;
-
-  // Buscar respuesta
-  let respuesta = "Lo siento, no entiendo tu pregunta. Podés consultarnos directamente por WhatsApp.";
-
-  for (let clave in respuestasPredefinidas) {
-    if (mensaje.includes(clave)) {
-      respuesta = respuestasPredefinidas[clave];
-      break;
-    }
+// Código para el chatbot
+  function toggleChat() {
+    const chat = document.getElementById('chatbotContainer');
+    chat.style.display = (chat.style.display === 'none' || chat.style.display === '') ? 'flex' : 'none';
   }
 
-  contenedorRespuesta.innerHTML = `<strong>Vos:</strong> ${mensaje}<br><strong>Bot:</strong> ${respuesta}`;
-  input.value = "";
-}
+  function enviar() {
+    const entrada = document.getElementById('mensaje').value.toLowerCase().trim();
+    const respuestaDiv = document.getElementById('respuesta');
+
+    const respuestas = {
+      "hola": "¡Hola! ¿En qué puedo ayudarte?",
+      "tramites": "Podés hacer consultas sobre transferencia, informe de dominio, licencia de conducir y más.",
+      "requisitos": "Los requisitos varían según el trámite. Generalmente se requiere DNI, comprobante de domicilio y formulario completo.",
+      "tarda": "El tiempo promedio es de 5 a 10 días hábiles.",
+      "cuesta": "El costo depende del tipo de trámite. Consultalo en nuestra oficina o por WhatsApp.",
+      "ubicados": "Estamos en Calle Falsa 123, Ciudad, Provincia.",
+      "horario": "Atendemos de lunes a viernes de 9:00 a 17:00 hs.",
+      "gracias": "¡De nada! 😊"
+    };
+
+    const respuesta = respuestas[entrada] || "Lo siento, no tengo una respuesta para eso. Por favor, escribinos por WhatsApp o llamanos.";
+
+    respuestaDiv.innerHTML += `<div style="margin-top: 8px;"><strong>👤 Vos:</strong> ${entrada}</div>`;
+    respuestaDiv.innerHTML += `<div style="margin-top: 4px;"><strong>🤖 Bot:</strong> ${respuesta}</div>`;
+    document.getElementById('mensaje').value = '';
+    respuestaDiv.scrollTop = respuestaDiv.scrollHeight;
+  }
+
+
 
